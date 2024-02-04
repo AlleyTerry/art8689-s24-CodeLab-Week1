@@ -12,8 +12,8 @@ public class PrizeScript : MonoBehaviour
         GameManager.instance.score++;
         //prize relocates to random new location
         transform.position = new Vector3(
-           Random.Range(-10,10),
-           Random.Range(-10, 10)
+           Random.Range(-7,7),
+           Random.Range(-7, 7)
         );
     }
 }

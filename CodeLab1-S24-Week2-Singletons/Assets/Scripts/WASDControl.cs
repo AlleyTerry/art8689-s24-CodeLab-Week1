@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WASDControl : MonoBehaviour
 {
     public static WASDControl Instance;
     
     Rigidbody2D rb2d;
-
+    
     public float forceAmount = 60;
 
     void Awake()
@@ -56,4 +57,23 @@ public class WASDControl : MonoBehaviour
         rb2d.velocity *= 0.999f;
 
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        
+        //size goes up by 1
+        if (other.gameObject.tag == "fire")
+        {
+            gameObject.transform.localScale += new Vector3(.25f, .25f, .25f);
+        }
+        
+        if (other.gameObject.tag == "building")
+        {
+            SceneManager.LoadScene( SceneManager.GetActiveScene().buildIndex + 1);
+            
+        }
+        
+    }
+    
+    
 }

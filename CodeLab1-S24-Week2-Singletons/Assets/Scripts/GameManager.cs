@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     
     public TextMeshProUGUI scoreText;
 
+    public GameObject buildingPerson;
+
     void Awake()
     {
         if (instance == null) //if the instance var has not been set
@@ -40,11 +42,13 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Score: " + score;
         
         //when score reaches target score, we go to the next level
-        if (score == targetScore)
+        if (score >= targetScore)
         {
-            SceneManager.LoadScene(
-                SceneManager.GetActiveScene().buildIndex + 1);
+            Instantiate(buildingPerson);
             targetScore = Mathf.RoundToInt(targetScore + targetScore * 1.5f);
+            
         }
     }
+
+   
 }
